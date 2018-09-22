@@ -1,9 +1,10 @@
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static ArrayList<Server_Client> arrayListSocket = new ArrayList<>();
+    public static List<ServerClient> arrayListSserverClient = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
         try{
@@ -13,8 +14,8 @@ public class Main {
             while(true){
                 Socket socket = serverSocket.accept();
                 System.out.println("Новый участник присоединился к чату!");
-                Server_Client server_client = new Server_Client(socket);
-                arrayListSocket.add(server_client);
+                ServerClient serverClient = new ServerClient(socket);
+                arrayListSserverClient.add(serverClient);
             }
         }catch(Exception e){
             e.printStackTrace();
