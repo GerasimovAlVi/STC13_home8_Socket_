@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static List<ServerClient> arrayListSserverClient = new ArrayList<>();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         try(ServerSocket serverSocket = new ServerSocket(4888);){
             System.out.println("Сервер стартовал!");
 
