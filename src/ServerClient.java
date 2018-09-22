@@ -15,22 +15,27 @@ class ServerClient extends Thread {
     public void run(){
         String message;
         try{
-            message = bufferedReader.readLine();
-            bufferedWriter.write(message + "\n");
-            bufferedWriter.flush();
             while (true) {
                 message = bufferedReader.readLine();
+                if(message.equals("quit")){
+                    throw new Exception();
+                }
                 System.out.println("Сообщение от " + message);
-
                 for (ServerClient i : Main.arrayListSserverClient) {
                     i.bufferedWriter.write(message + "\n");
                     i.bufferedWriter.flush();
                 }
             }
         }catch(Exception e){
-            e.printStackTrace();
-        }finally{
+            Main.arrayListSserverClient.remove(this);
             System.out.println("Участник покинул чат!");
+            try {
+                bufferedReader.close();
+                bufferedWriter.close();
+                socket.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }

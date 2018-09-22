@@ -11,12 +11,11 @@ public class Listener extends  Thread {
     @Override
     public void run() {
         try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()))){
-
             while(true){
                 System.out.println(bufferedReader.readLine());
             }
         }catch(Exception e){
-            e.printStackTrace();
+            System.out.println("Вы вышли из чата!");
         }
     }
 }

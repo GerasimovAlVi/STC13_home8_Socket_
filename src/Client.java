@@ -14,14 +14,17 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Введите свое имя: ");
             String nickname = scanner.nextLine();
-            bufferedWriter.write("Привет " + nickname + "\n");
-            bufferedWriter.flush();
+            System.out.println("Привет " + nickname);
             String message = "";
             while(true){
                 message = scanner.nextLine();
-                bufferedWriter.write(nickname + ": " + message);
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
+                if(message.equals("quit")){
+                    break;
+                }
+                    bufferedWriter.write(nickname + ": " + message);
+                    bufferedWriter.newLine();
+                    bufferedWriter.flush();
+
             }
         }catch(Exception e){
             e.printStackTrace();

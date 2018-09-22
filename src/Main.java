@@ -7,8 +7,7 @@ public class Main {
     public static List<ServerClient> arrayListSserverClient = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        try{
-            ServerSocket serverSocket = new ServerSocket(4888);
+        try(ServerSocket serverSocket = new ServerSocket(4888);){
             System.out.println("Сервер стартовал!");
 
             while(true){
